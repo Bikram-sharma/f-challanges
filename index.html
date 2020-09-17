@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript on sterids</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css2.css">
+</head>
+<body>
+    <div class="container-1">
+    <h2>Challange 1: Your Age in Days</h2>
+     <div class="flex-box-container-1">
+      <div>
+        <button class="btn btn-primary" onclick="ageInDays()">Click me</button>
+      </div>
+
+      <div>
+        <button class="btn btn-danger" onclick="result()">Reset</button>
+      </div>
+     </div>
+
+     <div class="flex-box-container-1">
+         <div id="flex-box-result"></div>
+     </div>
+    </div>
+
+    <div class="container-1">
+      <h2>Challange 2: Cat Generator</h2>
+      <button class="btn btn-success" id="cat-generater" onclick="generateCat()">Generate Cat</button>
+
+      <div class="flex-box-container-2" id="flex-cat-gen">
+      <!-- <img src="https://cdn.pixabay.com/photo/2014/11/30/14/11/kitty-551554_960_720.jpg" alt="cat">  -->
+        
+
+      </div>
+
+    </div>
+
+    <div class="container-3">
+      <h2>Challange 3: Rock, Paper, Scissors</h2>
+      <div class="flex-box-rps" id="flex-box-rps-div">
+        <img id="rock" src="rock.png" alt="rps" height="150" width="150" onclick="rpsGame(this)">
+        <img id="paper" src="paper.png" alt="rps" height="150" width="150" onclick="rpsGame(this)">
+        <img id="scissors" src="scissors.png" alt="rps" height="150" width="150" onclick="rpsGame(this)">
+      </div>
+
+    </div>
+    
+
+    <script src= 'js2.js'>
+
+    </script>
+</body>
+</html>
