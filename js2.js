@@ -103,3 +103,111 @@ function rpsfrontEnd(humanImageChoice, botImageChoice, finalMessage) {
    document.getElementById('flex-box-rps-div').appendChild(botDiv)
    
 }
+
+// Challenge 4: Change Button Colors
+
+var all_buttons = document.getElementsByTagName('button');
+//console.log(all_button);
+
+var copyAllButtons = [];
+for (let i=0; i < all_buttons.length; i++) {
+    copyAllButtons.push(all_buttons[i]);
+}
+
+console.log(copyAllButtons);
+
+function buttonColorChange(buttonThingy) {
+    if (buttonThingy.value === 'red') {
+        buttonRed();
+    } else if (buttonThingy.value === 'green') {
+        buttonGreen();
+    } else if (buttonThingy.value === 'reset') {
+        buttonColorReset();
+    } else if (buttonThingy.value === 'random') {
+        randomColors();
+    }
+}    
+
+function buttonRed() {
+     for (let i=0; i < all_buttons.length; i++) {
+         all_buttons[i].classList.remove(all_buttons[i].classList[1]);
+         all_buttons[i].classList.add('btn-danger');
+     }
+}
+
+function buttonGreen() {
+    for (let i=0; i < all_buttons.length; i++) {
+        all_buttons[i].classList.remove(all_buttons[i].classList[1]);
+        all_buttons[i].classList.add('btn-success');
+    }
+}
+
+function buttonColorReset() {
+    for (let i=0; i < all_buttons.length; i++) {
+        all_buttons[i].classList.remove(all_buttons[i].classList[1]);
+        all_buttons[i].classList.add(copyAllButtons[i]);
+    }
+}
+
+function randomColors() {
+    let cohoices = ['btn-primary', 'btn-success','btn-danger', 'btn-warning']
+
+    for (let i=0; i < all_buttons.length; i++) {
+      let randomNumber = Math.floor(Math.random() * 4);
+      all_buttons[i].classList.remove(all_buttons[i].classList[1]);
+      all_buttons[i].classList.add(cohoices[randomNumber]);
+    }
+}
+
+// Challange 5:Blackjack
+let blackjackGame = {
+   'you': {'scoreSpan': '#your-blackjack-result', 'div': '#your-box', 'score': 0},
+   'dealer': {'scoreSpan': '#dealer-blackjack-result', 'div': '#dealer-box', 'score': 0},
+   'cards' : ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'K', 'J', 'Q', 'A'],
+}
+
+const YOU = blackjackGame['you']
+const DEALER = blackjackGame['dealer']
+
+const hitSound = new Audio('sounds/swish.m4a');
+
+
+document.querySelector("#blackjack-hit-button").addEventListener('click', blackjackHit);
+document.querySelector("#blackjack-deal-button").addEventListener('click', blackjackDeal);
+
+function blackjackHit() {
+    let card = randomCard();
+    console.log(card);
+    showcard(card, YOU);
+
+}
+
+function randomCard() {
+    let randomIndex = Math.floor(Math.random() * 13);
+    return blackjackGame['cards'][randomIndex];
+}
+
+function showcard(card, activePlayer) {
+    let cardImage = document.createElement('img');
+    cardImage.src = `images/${card}.png`;
+    document.querySelector(activePlayer['div']).appendChild(cardImage);
+    hitSound.play();
+
+}
+
+function blackjackDeal() {
+    let yourImages = document.querySelector('#your-box').querySelectorAll('img');
+    let dealerImages = document.querySelector('#dealer-box').querySelectorAll('img');
+    
+
+    for (i=0; i < yourImages.length; i++) {
+        yourImages[i].remove();
+    }
+
+    for (i=0; i < dealerImages.length; i++) {
+        dealerImages[i].remove();
+    }    
+
+}
+
+
